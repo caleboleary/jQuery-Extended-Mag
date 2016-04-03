@@ -118,6 +118,9 @@ jQuery.fn.extend({
 			//destroy listener
 			imageElement.on('extmdestroy',function(){
 				zoomElement.remove();
+				if (squareOverlay === true) {
+					overlayElement.remove();
+				}
 			});
 		}
 		if (typeof options === "undefined"){
