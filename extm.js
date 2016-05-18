@@ -37,14 +37,14 @@
 				}
 				if (options.squareOverlay) {
 					var overlayElement = $( "<div class='overlayElement' style='pointer-events:none;height:"+smallHeight+"px;width:"+smallWidth+"px;position:absolute;top:"+offset.top+"px;left:"+offset.left+"px;'></div>" );
-					overlayElement.insertAfter( imageElement );
+					$('body').append( overlayElement );
 					var innerOverlayElement = $("<div style='background-color:rgba(0,0,0,0.2);visibility:hidden;position:absolute;' class='innerOverlay'></div>");
 					overlayElement.append(innerOverlayElement);
 				}
 				if (!options.lazy) {
 					zoomElement.css("visibility","hidden"); //hide zoom holder
 				}
-				var fullSizeImage = $('<img style="position:relative;">'); //make a large clone and insert it
+				var fullSizeImage = $('<img style="position:relative;max-width:none;">'); //make a large clone and insert it
 				if (options.imageSrc) {
 					fullSizeImage.attr('src', options.imageSrc);
 				}
