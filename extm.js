@@ -139,16 +139,28 @@
 				});
 			}
 			if (options.lazy) {
-				$(this).one('load', function(){
+				if ($(this).width() && $(this).height()) {
 					$(this).one('mouseenter', function(){
 						extmInit(options, $(this));
 					});
-				});
+				}
+				else {
+					$(this).one('load', function(){
+						$(this).one('mouseenter', function(){
+							extmInit(options, $(this));
+						});
+					});
+				}
 			}
 			else {
-				$(this).one('load', function(){
+				if ($(this).width() && $(this).height()) {
 					extmInit(options, $(this));
-				});
+				}
+				else {
+					$(this).one('load', function(){
+						extmInit(options, $(this));
+					});
+				}
 			}
 		},
 		extmDestroy: function extmDestroy() {
