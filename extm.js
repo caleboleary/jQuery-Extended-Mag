@@ -139,7 +139,7 @@
 				});
 			}
 			if (options.lazy) {
-				if ($(this).width() && $(this).height()) {
+				if ($(this).width()>10 && $(this).height()>10) {
 					$(this).one('mouseenter', function(){
 						extmInit(options, $(this));
 					});
@@ -153,7 +153,7 @@
 				}
 			}
 			else {
-				if ($(this).width() && $(this).height()) {
+				if ($(this).width()>10 && $(this).height()>10) {
 					extmInit(options, $(this));
 				}
 				else {
