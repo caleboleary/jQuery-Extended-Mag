@@ -1,3 +1,10 @@
+/*
+	jQuery Extended Mag(nify)
+	Author: Caleb O'Leary
+	Site: http://caleboleary.com
+	Current Version: https://github.com/caleboleary/jQuery-Extended-Mag
+	MIT License
+*/
 (function($){
 	"use strict";
 	$.fn.extend({
