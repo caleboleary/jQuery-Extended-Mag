@@ -67,6 +67,12 @@ Function to destroy the zoom, useful for reinitializing after something has chan
 $('.mainImg9').extmDestroy();
 ```
 
+### Update Image
+Change the image source of the zoomed image, useful if you have thumbnails or need to change the image, and easier than destroy/re-init (and faster), safest with images of the same dimensions
+```sh
+$('.mainImg10').extmImageUpdate('URL_To_New_Image.jpg')
+```
+
 View the [Demo] here!
 
 [Demo]: <http://codepen.io/caleboleary/pen/JXyedK>
