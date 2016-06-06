@@ -137,6 +137,11 @@
 						overlayElement.remove();
 					}
 				});
+
+				//update image
+				imageElement.on('updateImage', function(event,newUrl) {
+					fullSizeImage.attr('src', newUrl);
+				});
 			}
 			if (options.lazy) {
 				if ($(this).width()>10 && $(this).height()>10) {
@@ -165,6 +170,9 @@
 		},
 		extmDestroy: function extmDestroy() {
 			$(this).trigger('extmdestroy');
+		},
+		extmImageUpdate: function(newUrl){
+			$(this).trigger('updateImage', newUrl);
 		}
 	});
 }(jQuery));
