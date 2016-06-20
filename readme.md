@@ -52,6 +52,15 @@ $('.mainImg7').extm({
 });
 ```
 
+### Right Padding
+If you use position:'right' you have access to the rightPad option which lets you add some space between the image and zoom element. This defaults to 0, so the two will touch. The below example will have a 20px gap between the two elements.
+```sh
+$('.mainImg7').extm({
+	position:'right',
+	rightPad:20
+});
+```
+
 ### Lazy Loading
 Instead of initializing when the function is called, it will wait until the first mouse-enter to insert zoom holders, set up listeners, etc. Can help with page load times.
 ```sh
