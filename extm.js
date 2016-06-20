@@ -1,3 +1,4 @@
+// ---- jQuery Extended Mag(nify) ---- //
 /*
 	jQuery Extended Mag(nify)
 	Author: Caleb O'Leary
@@ -15,6 +16,7 @@
 				imageSrc: $(this).attr('src'),
 				squareOverlay: false,
 				position: false,
+				rightPad:0,
 				lazy: false,
 				zoomLevel:1,
 				zoomSize:false
@@ -31,7 +33,7 @@
 						zoomElement.appendTo( $('body') );
 						zoomElement.css("position","absolute");
 						zoomElement.css("top",offset.top);
-						zoomElement.css("left",offset.left+smallWidth);
+						zoomElement.css("left",offset.left+smallWidth+options.rightPad);
 					}
 					else if (options.position === 'overlay') {
 						zoomElement.appendTo( $('body') );
@@ -51,11 +53,12 @@
 				if (options.squareOverlay) {
 					overlayElement = $( "<div class='overlayElement' style='pointer-events:none;height:"+smallHeight+"px;width:"+smallWidth+"px;position:absolute;top:"+offset.top+"px;left:"+offset.left+"px;'></div>" );
 					$('body').append( overlayElement );
-					innerOverlayElement = $("<div style='background-color:rgba(0,0,0,0.2);visibility:hidden;position:absolute;' class='innerOverlay'></div>");
+					innerOverlayElement = $("<div style='background-color:rgba(0,0,0,0.2);position:absolute;' class='innerOverlay'></div>");
 					overlayElement.append(innerOverlayElement);
 				}
 				if (!options.lazy) {
 					zoomElement.css("visibility","hidden"); //hide zoom holder
+					innerOverlayElement.css("visibility","hidden"); //hide zoom holder
 				}
 				if (options.zoomSize) {
 					var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+options.zoomSize+'px;">'); //make a large clone and insert it
