@@ -60,8 +60,11 @@
 				if (options.zoomSize) {
 					var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+options.zoomSize+'px;">'); //make a large clone and insert it
 				}
-				else {
+				else if (options.zoomLevel !== 1) {
 					var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+(100*options.zoomLevel)+'%;">'); //make a large clone and insert it
+				}
+				else {
+					var fullSizeImage = $('<img style="position:relative;max-width:none;">'); //make a large clone and insert it
 				}
 				if (options.imageSrc) {
 					fullSizeImage.attr('src', options.imageSrc);
