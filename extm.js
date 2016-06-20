@@ -86,7 +86,7 @@
 							offset = imageElement.offset();
 							if (options.position === 'right') {
 								zoomElement.css("top",offset.top);
-								zoomElement.css("left",offset.left+smallWidth);
+								zoomElement.css("left",offset.left+smallWidth+options.rightPad);
 							}
 							else if (options.position === 'overlay') {
 								zoomElement.css("top",offset.top);
