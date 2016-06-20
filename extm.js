@@ -1,4 +1,3 @@
-// ---- jQuery Extended Mag(nify) ---- //
 /*
 	jQuery Extended Mag(nify)
 	Author: Caleb O'Leary
@@ -58,7 +57,9 @@
 				}
 				if (!options.lazy) {
 					zoomElement.css("visibility","hidden"); //hide zoom holder
-					innerOverlayElement.css("visibility","hidden"); //hide zoom holder
+					if (options.squareOverlay) {
+						innerOverlayElement.css("visibility","hidden"); //hide zoom holder
+					}
 				}
 				if (options.zoomSize) {
 					var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+options.zoomSize+'px;">'); //make a large clone and insert it
