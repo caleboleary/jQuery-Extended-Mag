@@ -60,6 +60,22 @@ $('.mainImg8').extm({
 });
 ```
 
+### Custom Zoom Size
+Force the zoomed image to a custom pixel width, useful if you don't have a larger version of your image, but want to force it larger to retain a zoom effect. Height will adjust auto to your width and keep aspect ratio. Pass in an integer, defaults to false.
+```sh
+$('.mainImg9').extm({
+	zoomSize:1000
+});
+```
+
+### Custom Zoom Level
+Alternative to custom zoom size, this one will zoom to X times the size of the image you pass in, so you can force the zoomed image to always be double the size of the original by passing in 2. Defaults to 2. Pass in an integer. (Passing in 3 equates to adding width:300% to the image as CSS, if you pass both this and zoomSize, zoomSize will take precedence, and this will be ignored.)
+```sh
+$('.mainImg10').extm({
+	zoomLevel:2
+});
+```
+
 # Other Functions
 ### Destroy
 Function to destroy the zoom, useful for reinitializing after something has changed.
