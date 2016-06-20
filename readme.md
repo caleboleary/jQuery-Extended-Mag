@@ -78,7 +78,7 @@ $('.mainImg9').extm({
 ```
 
 ### Custom Zoom Level
-Alternative to custom zoom size, this one will zoom to X times the size of the image you pass in, so you can force the zoomed image to always be double the size of the original by passing in 2. Defaults to 2. Pass in an integer. (Passing in 3 equates to adding width:300% to the image as CSS, if you pass both this and zoomSize, zoomSize will take precedence, and this will be ignored.)
+Alternative to custom zoom size, this one will zoom to X times the size of the image you pass in, so you can force the zoomed image to always be double the size of the original by passing in 2. Defaults to 1 (100%, normal size). Pass in an integer. (Passing in 3 equates to adding width:300% to the image as CSS, if you pass both this and zoomSize, zoomSize will take precedence, and this will be ignored.)
 ```sh
 $('.mainImg10').extm({
 	zoomLevel:2
