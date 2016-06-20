@@ -16,7 +16,8 @@
 				squareOverlay: false,
 				position: false,
 				lazy: false,
-				zoomLevel:1
+				zoomLevel:1,
+				zoomSize:false
 			};
 			var options = $.extend({},defaultOptions,userOptions || {});
 			function extmInit(options, imageElement) {
@@ -56,7 +57,12 @@
 				if (!options.lazy) {
 					zoomElement.css("visibility","hidden"); //hide zoom holder
 				}
-				var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+(100*options.zoomLevel)+'%;">'); //make a large clone and insert it
+				if (options.zoomSize) {
+					var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+options.zoomSize+'px;">'); //make a large clone and insert it
+				}
+				else {
+					var fullSizeImage = $('<img style="position:relative;max-width:none;width:'+(100*options.zoomLevel)+'%;">'); //make a large clone and insert it
+				}
 				if (options.imageSrc) {
 					fullSizeImage.attr('src', options.imageSrc);
 				}
