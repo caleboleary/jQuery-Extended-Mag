@@ -18,7 +18,9 @@
 				rightPad:0,
 				lazy: false,
 				zoomLevel:1,
-				zoomSize:false
+				zoomSize:false,
+				loadingText:false,
+				loadingImage:false
 			};
 			var options = $.extend({},defaultOptions,userOptions || {});
 			function extmInit(options, imageElement) {
@@ -76,10 +78,48 @@
 				else {
 					fullSizeImage.attr('src', imageElement.attr('src'));
 				}
+
 				fullSizeImage.appendTo(zoomElement);			
 				//using this closure to make sure the function gets the right 'imageElement' - in case there are many zooms per page
 				(function(imageElement,zoomElement,fullSizeImage,overlayElement,smallHeight,smallWidth,offset, innerOverlayElement,options) {
+
+					//while we wait for fullsize to load...
+					if (options.loadingText){
+						var loadingElement = $( "<div class='loadingElement' style='pointer-events:none;height:"+smallHeight+"px;width:"+smallWidth+"px;font-family:sans-serif;position:absolute;top:"+offset.top+"px;left:"+offset.left+"px;visibility:hidden;background:rgba(255,255,255,0.5);color:black;font-size:2em;font-weight:bold;text-align:center;'><p style='position: absolute; left: 50%;top: 50%;transform: translate(-50%, -50%);'>"+options.loadingText+"</p></div>" );
+						$('body').append( loadingElement );
+						imageElement.on('mouseenter', function(){
+							loadingElement.css("visibility","visible");
+						});
+						imageElement.on('mouseleave', function(){
+							loadingElement.css("visibility","hidden");
+						});
+						if (imageElement.is(':hover')) {
+							imageElement.trigger("mouseenter");
+						}
+					}
+					else if (options.loadingImage) {
+						var loadingElement = $( "<div class='loadingElement' style='pointer-events:none;height:"+smallHeight+"px;width:"+smallWidth+"px;font-family:sans-serif;position:absolute;top:"+offset.top+"px;left:"+offset.left+"px;visibility:hidden;background:rgba(255,255,255,0.5);color:black;font-size:2em;font-weight:bold;text-align:center;'><img style='position: absolute; left: 50%;top: 50%;transform: translate(-50%, -50%);' src='"+options.loadingImage+"'/></div>" );
+						$('body').append( loadingElement );
+						imageElement.on('mouseenter', function(){
+							loadingElement.css("visibility","visible");
+						});
+						imageElement.on('mouseleave', function(){
+							loadingElement.css("visibility","hidden");
+						});
+						if (imageElement.is(':hover')) {
+							imageElement.trigger("mouseenter");
+						}
+					}
+
 					fullSizeImage.load(function(){
+
+						if (options.loadingText || options.loadingImage){
+							//remove our loading stuff
+							imageElement.trigger("mouseleave");
+							imageElement.unbind('mouseenter mouseleave');
+							loadingElement.remove();
+						}
+
 						imageElement.on('mouseenter', function(){ //show/hide functionality
 							//before we show the zoom element, lets make sure everything is still lined up 
 							//this is here in case things have moved since init, like if the user changed their browser width and things shuffled
