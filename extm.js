@@ -107,6 +107,9 @@
 								innerOverlayElement.css("visibility","hidden");
 							}
 						});
+						if (imageElement.is(':hover')) {
+							imageElement.trigger("mouseenter");
+						}
 						var fullSizeWidth = fullSizeImage.width(); //declare all of our vars... ratios and heights
 						var fullSizeHeight = fullSizeImage.height();
 						var wRatio = fullSizeWidth/smallWidth;
